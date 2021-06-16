@@ -7,9 +7,11 @@ public class UserValidator {
 	/**
      	* @param NAME_PATTERN contain the correct pattern for First name and last name
 	* @param EMAIL_PATTERN contain the email 
+	* @param PHONE_NUMBER_PATTERN contain the correct pattern for phone number
 	*/
 	private final String NAME_PATTERN = "^[A-Z]{1}[a-z]{2,10}$"; 
 	private final String EMAIL_PATTERN = "^[a-zA-Z0-9]{1,}[[.|+|-]a-zA-Z0-9]*@[a-zA-Z0-9]{1,}((.){1}+)([a-z]{1,3}+)(.[a-z]{2,3})*$";
+	private final String PHONE_NUMBER_PATTERN = "[0-9]{2}[\\s][0-9]{10}$";
 	
 	/** 
   	 * Uc1:
@@ -47,4 +49,17 @@ public class UserValidator {
         	boolean result = matcher.matches();
         	return result;
     	}
+
+	/**
+	* Uc4:
+     	* @method validatePhoneNumber Check the pattern for Phone Number
+     	* @return boolean this returns true/false based on the phoneNumber test result
+     	*/
+    	public boolean validatePhoneNumber(String phoneNumber) {
+        	Pattern pattern = Pattern.compile(PHONE_NUMBER_PATTERN);
+        	Matcher matcher = pattern.matcher(phoneNumber);
+        	boolean result = matcher.matches();
+        	return result;
+    	}
+
 }
