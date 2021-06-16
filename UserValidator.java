@@ -21,4 +21,16 @@ public class UserValidator {
         	return result;
     	}
 
+	/**
+     	* Uc2: 
+	* @method validateLastName Check the pattern for first name
+     	* @return boolean this returns true/false based on the firstname test result
+     	*/
+    	public boolean validateLastName(String lastName) {
+        	Pattern pattern = Pattern.compile(NAME_PATTERN);
+        	Matcher matcher = pattern.matcher(lastName);
+        	boolean result = matcher.matches();
+        	return result;
+    	}
+
 }
