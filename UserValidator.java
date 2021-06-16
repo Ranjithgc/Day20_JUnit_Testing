@@ -6,8 +6,10 @@ import java.util.regex.Pattern;
 public class UserValidator {
 	/**
      	* @param NAME_PATTERN contain the correct pattern for First name and last name
-	 */
+	* @param EMAIL_PATTERN contain the email 
+	*/
 	private final String NAME_PATTERN = "^[A-Z]{1}[a-z]{2,10}$"; 
+	private final String EMAIL_PATTERN = "^[a-zA-Z0-9]{1,}[[.|+|-]a-zA-Z0-9]*@[a-zA-Z0-9]{1,}((.){1}+)([a-z]{1,3}+)(.[a-z]{2,3})*$";
 	
 	/** 
   	 * Uc1:
@@ -32,5 +34,17 @@ public class UserValidator {
         	boolean result = matcher.matches();
         	return result;
     	}
+	
+	/**
+	* Uc3:
+     	* @method validateEmail Check the pattern for email
+     	* @return boolean this returns true/false based on the email test result
+     	*/
 
+    	public boolean validateEmail(String email) {
+        	Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        	Matcher matcher = pattern.matcher(email);
+        	boolean result = matcher.matches();
+        	return result;
+    	}
 }
