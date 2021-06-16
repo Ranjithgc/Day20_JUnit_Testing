@@ -13,7 +13,7 @@ public class UserValidator {
 	private final String NAME_PATTERN = "^[A-Z]{1}[a-z]{2,10}$"; 
 	private final String EMAIL_PATTERN = "^[a-zA-Z0-9]{1,}[[.|+|-]a-zA-Z0-9]*@[a-zA-Z0-9]{1,}((.){1}+)([a-z]{1,3}+)(.[a-z]{2,3})*$";
 	private final String PHONE_NUMBER_PATTERN = "[0-9]{2}[\\s][0-9]{10}$";
-	private	final String PASSWORD_PATTERN = "^[a-zA-Z0-9]{8,}"
+	private	final String PASSWORD_PATTERN = "^[a-zA-Z0-9][@#$%^&+=]{8,}"
 
 	/** 
   	 * Uc1:
@@ -73,6 +73,8 @@ public class UserValidator {
 	* Rule 2: should contain atleast 1 Uppercase letter
 	* Uc7:
 	* Rule 3: should contain atleast 1 number
+	* Uc8:
+	* Rule 4: should contain atleast 1 special character
      	*/
 
     	public boolean validatePassword(String password) {
