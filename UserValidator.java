@@ -40,7 +40,7 @@ public class UserValidator {
     	}
 	
 	/**
-	* Uc3:
+	* Uc3 and Uc9:
      	* @method validateEmail Check the pattern for email
      	* @return boolean this returns true/false based on the email test result
      	*/
