@@ -21,10 +21,13 @@ public class UserValidator {
      	 * @return boolean this returns true/false based on the firstname test result
      	 */
 	public boolean validateFirstName(String firstName) {
-        	Pattern pattern = Pattern.compile(NAME_PATTERN);
-        	Matcher matcher = pattern.matcher(firstName);
-        	boolean result = matcher.matches();
-        	return result;
+		try {
+        		Pattern pattern = Pattern.compile(NAME_PATTERN);
+        		Matcher matcher = pattern.matcher(firstName);
+        		if(!matcher.matches()) {
+				throw new UserDefinedException("Enter a valid pattern");
+			}
+        		return matcher.matches();
     	}
 
 	/**
@@ -35,8 +38,10 @@ public class UserValidator {
     	public boolean validateLastName(String lastName) {
         	Pattern pattern = Pattern.compile(NAME_PATTERN);
         	Matcher matcher = pattern.matcher(lastName);
-        	boolean result = matcher.matches();
-        	return result;
+        	if(!matcher.matches()) {
+			throw new UserDefinedException("Enter a valid pattern");
+		}
+        	return matcher.matches();
     	}
 	
 	/**
@@ -48,8 +53,10 @@ public class UserValidator {
     	public boolean validateEmail(String email) {
         	Pattern pattern = Pattern.compile(EMAIL_PATTERN);
         	Matcher matcher = pattern.matcher(email);
-        	boolean result = matcher.matches();
-        	return result;
+        	if(!matcher.matches()) {
+			throw new UserDefinedException("Enter a valid pattern");
+        	}
+		return matcher.matches();
     	}
 
 	/**
@@ -60,8 +67,10 @@ public class UserValidator {
     	public boolean validatePhoneNumber(String phoneNumber) {
         	Pattern pattern = Pattern.compile(PHONE_NUMBER_PATTERN);
         	Matcher matcher = pattern.matcher(phoneNumber);
-        	boolean result = matcher.matches();
-        	return result;
+        	if(!matcher.matches()) {
+			throw new UserDefinedException("Enter a valid pattern");
+        	}
+		return matcher.matches();
     	}
 	
 	/**
@@ -80,7 +89,9 @@ public class UserValidator {
     	public boolean validatePassword(String password) {
         	Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
         	Matcher matcher = pattern.matcher(password);
-        	boolean result = matcher.matches();
-        	return result;
+        	if(!matcher.matches()) {
+			throw new UserDefinedException("Enter a valid pattern");
+        	}
+		return matcher.matches();
     	}
 }
