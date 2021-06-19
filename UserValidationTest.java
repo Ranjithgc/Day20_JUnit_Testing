@@ -12,7 +12,7 @@ public class UserValidationTest {
 	 */
 
 	@Test
-	public void testValidateFirstName() {
+	public void testValidateFirstName() throws UserDefinedException {
 		UserValidator userValidator = new UserValidator();
 		boolean result = userValidator.validateFirstName("Shekhar");
 		Assert.assertEquals(true, result);
@@ -25,7 +25,7 @@ public class UserValidationTest {
 	 */
 
 	@Test
-	public void testInvalidFirstName() {
+	public void testInvalidFirstName() throws UserDefinedException {
 		UserValidator userValidator = new UserValidator();
 		boolean result = userValidator.validateFirstName("abc");
 		Assert.assertEquals(false, result);
@@ -39,7 +39,7 @@ public class UserValidationTest {
 	 */
 
 	@Test
-	public void testShortFirstName() {
+	public void testShortFirstName() throws UserDefinedException {
 		UserValidator userValidator = new UserValidator();
 		boolean result = userValidator.validateFirstName("ab");
 		Assert.assertEquals(false, result);
@@ -53,7 +53,7 @@ public class UserValidationTest {
 	 */
 
 	@Test
-	public void testValidateLastName() {
+	public void testValidateLastName() throws UserDefinedException {
 		UserValidator userValidator = new UserValidator();
 		boolean result = userValidator.validateLastName("Patle");
 		Assert.assertEquals(true, result);
@@ -66,7 +66,7 @@ public class UserValidationTest {
 	 */
 
 	@Test
-	public void testInvalidLastName() {
+	public void testInvalidLastName() throws UserDefinedException {
 		UserValidator userValidator = new UserValidator();
 		boolean result = userValidator.validateLastName("xyz");
 		Assert.assertEquals(false, result);
@@ -80,7 +80,7 @@ public class UserValidationTest {
 	 */
 
 	@Test
-	public void testShortLastName() {
+	public void testShortLastName() throws UserDefinedException {
 		UserValidator userValidator = new UserValidator();
 		boolean result = userValidator.validateLastName("xy");
 		Assert.assertEquals(false, result);
@@ -95,7 +95,7 @@ public class UserValidationTest {
 	 */
 
 	@Test
-	public void testValidPhoneNumber() {
+	public void testValidPhoneNumber() throws UserDefinedException {
 		UserValidator userValidator = new UserValidator();
 		boolean result = userValidator.validatePhoneNumber("91 7020714423");
 		Assert.assertEquals(true, result);
@@ -109,7 +109,7 @@ public class UserValidationTest {
 	 */
 
 	@Test
-	public void testInvalidNoSpacePhoneNumber() {
+	public void testInvalidNoSpacePhoneNumber() throws UserDefinedException {
 		UserValidator userValidator = new UserValidator();
 		boolean result = userValidator.validatePhoneNumber("918605141014");
 		Assert.assertEquals(false, result);
@@ -123,7 +123,7 @@ public class UserValidationTest {
 	 */
 
 	@Test
-	public void testInvalidShortPhoneNumber() {
+	public void testInvalidShortPhoneNumber() throws UserDefinedException {
 		UserValidator userValidator = new UserValidator();
 		boolean result = userValidator.validatePhoneNumber("89 8605141014");
 		Assert.assertEquals(false, result);
@@ -136,7 +136,7 @@ public class UserValidationTest {
 	 */
 
 	@Test
-	public void testInvalidWithoutCountryCodePhoneNumber() {
+	public void testInvalidWithoutCountryCodePhoneNumber() throws UserDefinedException {
 		UserValidator userValidator = new UserValidator();
 		boolean result = userValidator.validatePhoneNumber("7020714423");
 		Assert.assertEquals(false, result);
@@ -151,7 +151,7 @@ public class UserValidationTest {
 	 */
 
 	@Test
-	public void testValidPassword() {
+	public void testValidPassword() throws UserDefinedException {
 		UserValidator userValidator = new UserValidator();
 		boolean result = userValidator.validatePassword("Shekhar@24");
 		Assert.assertEquals(true, result);
@@ -165,7 +165,7 @@ public class UserValidationTest {
 	 */
 
 	@Test
-	public void testInvalidShortPassword() {
+	public void testInvalidShortPassword() throws UserDefinedException {
 		UserValidator userValidator = new UserValidator();
 		boolean result = userValidator.validatePassword("Shekhar24@");
 		Assert.assertEquals(false, result);
@@ -179,7 +179,7 @@ public class UserValidationTest {
 	 */
 
 	@Test
-	public void testInvalidSkipUpperCasePassword() {
+	public void testInvalidSkipUpperCasePassword() throws UserDefinedException {
 		UserValidator userValidator = new UserValidator();
 		boolean result = userValidator.validatePassword("24Shekhar@");
 		Assert.assertEquals(false, result);
@@ -193,7 +193,7 @@ public class UserValidationTest {
 	 */
 
 	@Test
-	public void testInvalidSkipNumericValuePassword() {
+	public void testInvalidSkipNumericValuePassword() throws UserDefinedException {
 		UserValidator userValidator = new UserValidator();
 		boolean result = userValidator.validatePassword("Shekhar24@");
 		Assert.assertEquals(false, result);
@@ -207,7 +207,7 @@ public class UserValidationTest {
 	 */
 
 	@Test
-	public void testInvalidSkipSpecialCharacterPassword() {
+	public void testInvalidSkipSpecialCharacterPassword() throws UserDefinedException {
 		UserValidator userValidator = new UserValidator();
 		boolean result = userValidator.validatePassword("Shekharpatle24@");
 		Assert.assertEquals(false, result);
