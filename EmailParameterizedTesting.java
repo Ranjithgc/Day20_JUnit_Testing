@@ -46,7 +46,7 @@ public class EmailParameterizedTesting {
     	}
 
     	@Test
-   	public void validatePassword() {
+   	public void validatePassword() throws UserDefinedException {
         	UserValidator userValidator = new UserValidator();
         	Assert.assertEquals(this.expected,userValidator.validateEmail(this.email));
     	}
