@@ -1,215 +1,124 @@
 package com.bridgelabz.junit;
 
-import org.junit.Assert;
+import org.junit.Before;
+import static org.junit.Assert;
 import org.junit.Test;
 
 public class UserValidationTest {
-	// FirstName
-	/**
-	 * @method testValidateFirstName test Happy case for first name
-	 * @Test take a correct input where first latter is Cap
-	 * @return true
-	 */
+	UserValidator user;
+	boolean result;
+	String[] allEmails;
 
-	@Test
-	public void testValidateFirstName() throws UserDefinedException {
-		UserValidator userValidator = new UserValidator();
-		boolean result = userValidator.validateFirstName("Shekhar");
-		Assert.assertEquals(true, result);
+	@Before
+	public void setup() {
+
+		user = new UserValidator();
+
 	}
 
-	/**
-	 * @method testInvalidFirstName test Sad case for first name
-	 * @Test take a wrong input where first latter is not Cap
-	 * @return false
-	 */
-
 	@Test
-	public void testInvalidFirstName() throws UserDefinedException {
-		UserValidator userValidator = new UserValidator();
-		boolean result = userValidator.validateFirstName("abc");
-		Assert.assertEquals(false, result);
+	public void firstName_checkValidation_ture() {
+		boolean result = user.checkFirstName.validate("Shekhar");
+		Assertions.assertFalse(result);
+
 	}
 
-	/**
-	 * @method testShortFirstName test Sad case for first name
-	 * @Test take a wrong input where first latter is not Cap and we take only two
-	 *       Character
-	 * @return false
-	 */
-
 	@Test
-	public void testShortFirstName() throws UserDefinedException {
-		UserValidator userValidator = new UserValidator();
-		boolean result = userValidator.validateFirstName("ab");
-		Assert.assertEquals(false, result);
+	public void firstName_checkValidate_false() {
+		boolean result = user.checkLastName.validate("Shekhar123");
+		Assertions.assertFalse(result);
 	}
 
-	// LastName
-	/**
-	 * @method testValidateLastName test Happy case for last name
-	 * @Test take a correct input where first latter is Cap
-	 * @return true
-	 */
-
 	@Test
-	public void testValidateLastName() throws UserDefinedException {
-		UserValidator userValidator = new UserValidator();
-		boolean result = userValidator.validateLastName("Patle");
-		Assert.assertEquals(true, result);
+	public void lastName_checkValidation_ture() {
+		boolean result = user.checkLastName.validate("Patle");
+		Assertions.assertFalse(result);
+
 	}
 
-	/**
-	 * @method testInvalidLastName test Sad case for last name
-	 * @Test take a wrong input where first latter is not Cap
-	 * @return false
-	 */
-
 	@Test
-	public void testInvalidLastName() throws UserDefinedException {
-		UserValidator userValidator = new UserValidator();
-		boolean result = userValidator.validateLastName("xyz");
-		Assert.assertEquals(false, result);
+	public void lastName_CheckValidation_false() {
+		boolean result = user.checkLastName.validate("Patle");
+		Assertions.assertFalse(result);
+
 	}
 
-	/**
-	 * @method testShortLastName test Sad case for last name
-	 * @Test take a wrong input where first latter is not Cap and we take only two
-	 *       Character
-	 * @return false
-	 */
-
 	@Test
-	public void testShortLastName() throws UserDefinedException {
-		UserValidator userValidator = new UserValidator();
-		boolean result = userValidator.validateLastName("xy");
-		Assert.assertEquals(false, result);
+	public void Email_checkValidation_True() {
+
+		boolean result = user.checkEmail.validate("shekharpatle0@gmail.com");
+		Assertions.assertFalse(result);
+
 	}
 
-	// Phone Number
-	/**
-	 * @method testValidPhoneNumber test Happy case for phoneNo
-	 * @Test take right input where we mention country code then a space and then 10
-	 *       digit phoneNo
-	 * @return true
-	 */
-
 	@Test
-	public void testValidPhoneNumber() throws UserDefinedException {
-		UserValidator userValidator = new UserValidator();
-		boolean result = userValidator.validatePhoneNumber("91 7020714423");
-		Assert.assertEquals(true, result);
+	public void Email_checkValidation_False() {
+
+		boolean result = user.checkEmail.validate("shekharpatle0@gmail.com");
+		Assertions.assertFalse(result);
+
 	}
 
-	/**
-	 * @method testInvalidNoSpacePhoneNumber test sad case for phoneNo
-	 * @Test take wrong input where we mention country code but donot give a space
-	 *       between country code and 10 digit phoneNo
-	 * @return false
-	 */
-
 	@Test
-	public void testInvalidNoSpacePhoneNumber() throws UserDefinedException {
-		UserValidator userValidator = new UserValidator();
-		boolean result = userValidator.validatePhoneNumber("918605141014");
-		Assert.assertEquals(false, result);
+	public void MobileNumber_validation_True() {
+
+		boolean result = user.checkMobileNum.validate("91 7020714423");
+		Assertions.assertFalse(result);
+
 	}
 
-	/**
-	 * @method testInvalidShortPhoneNumber test sad case for phoneNo
-	 * @Test take wrong input where we mention country code then a space and then
-	 *       less then 10 digit phoneNo
-	 * @return false
-	 */
-
 	@Test
-	public void testInvalidShortPhoneNumber() throws UserDefinedException {
-		UserValidator userValidator = new UserValidator();
-		boolean result = userValidator.validatePhoneNumber("89 8605141014");
-		Assert.assertEquals(false, result);
+	public void MobileNumber_validation_False() {
+
+		boolean result = user.checkMobileNum.validate("917020714423");
+		Assertions.assertFalse(result);
+
 	}
 
-	/**
-	 * @method testInvalidShortPhoneNumber test sad case for phoneNo
-	 * @Test take wrong input where we mention 10 digit phoneNo without country code
-	 * @return false
-	 */
-
 	@Test
-	public void testInvalidWithoutCountryCodePhoneNumber() throws UserDefinedException {
-		UserValidator userValidator = new UserValidator();
-		boolean result = userValidator.validatePhoneNumber("7020714423");
-		Assert.assertEquals(false, result);
+	public void Password_validation_True() {
+
+		boolean result = user.checkPassword.validate("shekhar@123");
+		Assertions.assertFalse(result);
+
 	}
 
-	/**
-	 * @method testvalidPassword test sad case for phoneNo
-	 * @test (follow all the 4 rules) Rule-1 Minimum 8 character Rule-2 At least one
-	 *       Upper case Rule-3 At least one Numeric value Rule-4 at least one
-	 *       Special character
-	 * @return true
-	 */
-
 	@Test
-	public void testValidPassword() throws UserDefinedException {
-		UserValidator userValidator = new UserValidator();
-		boolean result = userValidator.validatePassword("Shekhar@24");
-		Assert.assertEquals(true, result);
+	public void Password_validation_False() {
+
+		boolean result = user.checkPassword.validate("shekhar@@@2401");
+		Assertions.assertFalse(result);
+
 	}
 
-	/**
-	 * @method testvalidPassword test sad case for phoneNo
-	 * @test skip Rule1 Rule-1 Minimum 8 character Rule-2 At least one Upper case
-	 *       Rule-3 At least one Numeric value Rule-4 at least one Special character
-	 * @return false
-	 */
-
 	@Test
-	public void testInvalidShortPassword() throws UserDefinedException {
-		UserValidator userValidator = new UserValidator();
-		boolean result = userValidator.validatePassword("Shekhar24@");
-		Assert.assertEquals(false, result);
+
+	public void All_Email_valid_True() {
+
+		allEmails = new String[] { "abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com",
+				"abc-100@abc.net", "abc.100@abc.com.au", "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com" };
+
+		for (String emailIDs : allEmails) {
+
+			result = user.checkEmail.validate(emailIDs);
+			System.out.println(result);
+			Assertions.assertFalse(result);
+
+		}
 	}
 
-	/**
-	 * @method testvalidPassword test sad case for phoneNo
-	 * @test skip Rule2 Rule-1 Minimum 8 character Rule-2 At least one Upper case
-	 *       Rule-3 At least one Numeric value Rule-4 at least one Special character
-	 * @return false
-	 */
-
 	@Test
-	public void testInvalidSkipUpperCasePassword() throws UserDefinedException {
-		UserValidator userValidator = new UserValidator();
-		boolean result = userValidator.validatePassword("24Shekhar@");
-		Assert.assertEquals(false, result);
-	}
+	public void All_Email_validation_false() {
 
-	/**
-	 * @method testvalidPassword test sad case for phoneNo
-	 * @test skip Rule3 Rule-1 Minimum 8 character Rule-2 At least one Upper case
-	 *       Rule-3 At least one Numeric value Rule-4 at least one Special character
-	 * @return false
-	 */
+		allEmails = new String[] { "abc", "abc@.com.my", "abc123@gmail.a", "abc123@.com", "abc123@.com.com",
+				".abc@abc.com", "abc()*@gmail.com", "abc@%*.com", "abc..2002@gmail.com", "abc.@gmail.com",
+				"abc@abc@gmail.com", "abc@gmail.com.1a", "abc@gmail.com.aa.au" };
 
-	@Test
-	public void testInvalidSkipNumericValuePassword() throws UserDefinedException {
-		UserValidator userValidator = new UserValidator();
-		boolean result = userValidator.validatePassword("Shekhar24@");
-		Assert.assertEquals(false, result);
-	}
+		for (String emailIDs : allEmails) {
+			result = user.checkEmail.validate(emailIDs);
+			System.out.println(result);
+			Assertions.assertFalse(result);
 
-	/**
-	 * @method testvalidPassword test sad case for phoneNo
-	 * @test skip Rule4 Rule-1 Minimum 8 character Rule-2 At least one Upper case
-	 *       Rule-3 At least one Numeric value Rule-4 at least one Special character
-	 * @return false
-	 */
-
-	@Test
-	public void testInvalidSkipSpecialCharacterPassword() throws UserDefinedException {
-		UserValidator userValidator = new UserValidator();
-		boolean result = userValidator.validatePassword("Shekharpatle24@");
-		Assert.assertEquals(false, result);
+		}
 	}
 }
